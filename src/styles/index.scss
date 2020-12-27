@@ -1,6 +1,192 @@
-$body-color: slateblue;
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
 
 body {
-  color: $body-color;
-  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #232526;
+  background: linear-gradient(to right, #414345, #232526);
+
+  * {
+    font-family: "Rajdhani", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    font-kerning: none;
+    box-sizing: border-box;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    font-size: 0.875rem;
+  }
+}
+
+@mixin grid-utils {
+  display: grid;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.container {
+  perspective: 1000px;
+}
+
+#keyboard {
+  position: relative;
+  width: 900px;
+  height: 280px;
+  transform: rotateX(30deg);
+
+  @include grid-utils;
+
+  .dock,
+  .key-side {
+    position: absolute;
+  }
+
+  .front-side {
+    width: 900px;
+    height: 35px;
+    background: #9c9c9c;
+    transform: rotateX(-90deg) translateZ(140px);
+  }
+
+  .back-side {
+    width: 900px;
+    height: 35px;
+    background-color: #9c9c9c;
+    transform: rotateX(90deg) translateZ(140px);
+  }
+
+  .left-side {
+    width: 280px;
+    height: 35px;
+    background: #7a7a7a;
+    transform: rotateZ(90deg) rotateX(-90deg) translateZ(450px);
+  }
+
+  .right-side {
+    width: 280px;
+    height: 35px;
+    background: #7a7a7a;
+    transform: rotateZ(90deg) rotateX(90deg) translateZ(450px);
+  }
+
+  .bottom-side {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+  }
+
+  #rows {
+    width: 900px;
+    height: 280px;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    transform: translateZ(10px);
+    background: #cacaca;
+
+    .key-row {
+      margin: 0.4%;
+      gap: 5px;
+      grid-template-columns: repeat(60, 1fr);
+
+      @include grid-utils;
+
+      .key {
+        width: 100%;
+        height: 100%;
+        grid-column: span 4;
+
+        @include grid-utils;
+
+        .key-side {
+          border-radius: 3px;
+        }
+
+        .front {
+          width: 100%;
+          height: 50%;
+          background: #aba9a9;
+        }
+
+        .back {
+          width: 100%;
+          height: 50%;
+          background: #aba9a9;
+        }
+
+        .left {
+          width: 14px;
+          height: 100%;
+          background: #969696;
+        }
+
+        .right {
+          width: 14px;
+          height: 100%;
+          background: #969696;
+        }
+
+        .top {
+          width: 100%;
+          height: 100%;
+          background: gainsboro;
+
+          .charecters {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-transform: uppercase;
+            color: #848484;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: bold;
+          }
+        }
+
+        &#backspace-key {
+          grid-column: span 8;
+
+          .left {
+            width: 14px;
+          }
+        }
+
+        &#super-key,
+        &#control-key,
+        &#rightAlt-key,
+        &#contextMenu-key,
+        &#alt-key {
+          grid-column: span 5;
+        }
+
+        &#tab-key,
+        &#rightControl-key,
+        &#back-slash-key {
+          grid-column: span 6;
+        }
+
+        &#capsLock-key {
+          grid-column: span 7;
+        }
+
+        &#shift-key,
+        &#enter-key {
+          grid-column: span 9;
+        }
+
+        &#rightShift-key {
+          grid-column: span 11;
+        }
+
+        &#spaceBar-key {
+          grid-column: span 25;
+        }
+      }
+    }
+  }
 }
