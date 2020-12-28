@@ -15,7 +15,7 @@ export default class Key {
       shortForm
     } = keyData;
     return `
-      <div id="${ className || this.currentKey }-key" class="key${ keyDisabled ? " disabled" : "" }" data-key-text="${ this.currentKey }" data-key-code="${ keyCode }">
+      <div id="virtual-${ className || this.currentKey }-key" class="key${ keyDisabled ? " disabled" : "" }" data-key-text="${ this.currentKey }" data-shift-charecter="${ shiftCharecter || "" }" data-key-code="${ keyCode }">
         <div class="key-side front"></div>
         <div class="key-side back"></div>
         <div class="key-side left"></div>
@@ -25,7 +25,9 @@ export default class Key {
             <span class="main-charecter">${ shortForm || this.currentKey }</span>
             <span class="shift-charecter">${ shiftCharecter || "" }</span>
           </div>
-          ${ (this.currentKey == "capsLock") ? '<span class="capsLock"></span>' : "" }
+          ${ (this.currentKey == "capslock") ? '<span class="capsLockIndicator off"></span>' : "" }
+          ${ (this.currentKey == "spacebar") ? '<span class="spaceIndicator"></span>' : "" }
+          ${ (this.currentKey == "contextmenu") ? '<span class="contextMenuIcon"><span></span></span>' : "" }
         </div>
       </div>
     `;
@@ -50,5 +52,6 @@ export default class Key {
     keyLeft.style.transform = `rotateY(90deg) translateX(-${keyHeight / 4}px) translateZ(-${keyWidth / 2}px)`;
     keyRight.style.width = `${keyElement.clientHeight / 2}px`;
     keyRight.style.transform = `rotateY(90deg) translateX(-${keyHeight / 4}px) translateZ(${keyWidth / 2}px)`;
+    return keyElement;
   }
 }

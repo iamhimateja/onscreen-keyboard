@@ -1,33 +1,49 @@
-# Webpack Frontend Starterkit
+<p align="center">
+Virtual Keyboard <br/>
+<small>https://virtual-keyboard-himu.netlify.app/</small> <br/><br/>
+<img src="demo.gif" alt="Virtual Keyboard">
+</p>
 
-[![Dependabot badge](https://flat.badgen.net/dependabot/wbkd/webpack-starter?icon=dependabot)](https://dependabot.com/)
+# The Virtual Keyboard
+> A virtual keyboard from scratch with Vanilla JS, HTML, and CSS that can be used in the browser and will be responsive.
+One to two paragraph statement about your product and what it does.
 
-A lightweight foundation for your next webpack based frontend project.
+![](sample.jpg)
 
-### Installation
+## MVP Requirement (Mandatory)
 
-```
-npm install
-```
+1. Render the keyboard on a page no need to login
 
-### Start Dev Server
+    - Do not ask for any authentication, however the app should start right away
+    - It should be a SPA, no navigation is required
 
-```
-npm start
-```
+2. Render a `On/Off` button click.
 
-### Build Prod Version
+3. Display the typed text in a open text-area 
+    - This area should not be editable otherwise
 
-```
-npm run build
-```
+4. Should replicate an actual QWERTY keyboad for mobile machines 
 
-### Features:
+5. Render a `CAPs` on/off button with functionality
 
-- ES6 Support via [babel](https://babeljs.io/) (v7)
-- JavaScript Linting via [eslint-loader](https://github.com/MoOx/eslint-loader)
-- SASS Support via [sass-loader](https://github.com/jtangelder/sass-loader)
-- Autoprefixing of browserspecific CSS rules via [postcss](https://postcss.org/) and [autoprefixer](https://github.com/postcss/autoprefixer)
-- Style Linting via [stylelint](https://stylelint.io/)
+6. Handle all errors with appropriate error messages
 
-When you run `npm run build` we use the [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin) to move the css to a separate file. The css file gets included in the head of the `index.html`.
+## Optional Requirement
+
+- Write simple UTs for your application.
+- Create auto button-glow on key press
+
+## Tech stack
+
+- Vanilla JS
+- HTML/CSS/SCSS
+
+## Learning outcomes
+
+- Interactive UI design and smooth user experience
+- Js concepts
+    - Event handling
+    - Functions & Closure
+    - Js Classes & Prototypes
+- Basic JavaScript(array and string methods)
+- DOM manipulation

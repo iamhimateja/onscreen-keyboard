@@ -15,7 +15,7 @@ const keyCodes = {
     keyCode: 16
   },
 
-  "rightShift": {
+  "rightshift": {
     keyCode: 16,
     shortForm: "shift"
   },
@@ -25,7 +25,7 @@ const keyCodes = {
     shortForm: "ctrl"
   },
 
-  "rightControl": {
+  "rightcontrol": {
     keyCode: 17,
     shortForm: "ctrl"
   },
@@ -34,12 +34,12 @@ const keyCodes = {
     keyCode: 18
   },
 
-  "rightAlt": {
+  "rightalt": {
     keyCode: 18,
     shortForm: "alt"
   },
 
-  "capsLock": {
+  "capslock": {
     keyCode: 20,
     shortForm: "CAPS"
   },
@@ -49,54 +49,9 @@ const keyCodes = {
     shortForm: "ESC"
   },
 
-  "spaceBar": {
+  "spacebar": {
     keyCode: 32,
     shortForm: "&nbsp;"
-  },
-
-  "pageUp": {
-    keyCode: 33,
-    shortForm: "PU"
-  },
-
-  "pageDown": {
-    keyCode: 34,
-    shortForm: "PD"
-  },
-
-  "end": {
-    keyCode: 35
-  },
-
-  "home": {
-    keyCode: 36,
-    shortForm: "HM"
-  },
-
-  "leftArrow": {
-    keyCode: 37
-  },
-
-  "upArrow": {
-    keyCode: 38
-  },
-
-  "rightArrow": {
-    keyCode: 39
-  },
-
-  "downArrow": {
-    keyCode: 40
-  },
-
-  "insert": {
-    keyCode: 45,
-    disabled: true,
-    shortForm: "INS"
-  },
-
-  "delete": {
-    keyCode: 46
   },
 
   "0": {
@@ -253,13 +208,15 @@ const keyCodes = {
     keyCode: 90
   },
 
-  "contextMenu": {
+  "contextmenu": {
     keyCode: 93,
     shortForm: "&nbsp;"
   },
 
-  "super": {
-    keyCode: 93
+  "meta": {
+    keyCode: 93,
+    shortForm: "super",
+    className: "super"
   },
 
   "numpad_0": {
@@ -300,66 +257,6 @@ const keyCodes = {
 
   "numpad_9": {
     keyCode: 105
-  },
-
-  "f1": {
-    keyCode: 112,
-    disabled: true
-  },
-
-  "f2": {
-    keyCode: 113,
-    disabled: true
-  },
-
-  "f3": {
-    keyCode: 114,
-    disabled: true
-  },
-
-  "f4": {
-    keyCode: 115,
-    disabled: true
-  },
-
-  "f5": {
-    keyCode: 116,
-    disabled: true
-  },
-
-  "f6": {
-    keyCode: 117,
-    disabled: true
-  },
-
-  "f7": {
-    keyCode: 118,
-    disabled: true
-  },
-
-  "f8": {
-    keyCode: 119,
-    disabled: true
-  },
-
-  "f9": {
-    keyCode: 120,
-    disabled: true
-  },
-
-  "f10": {
-    keyCode: 121,
-    disabled: true
-  },
-
-  "f11": {
-    keyCode: 122,
-    disabled: true
-  },
-
-  "f12": {
-    keyCode: 123,
-    disabled: true
   },
 
   ";": {

@@ -1,12 +1,19 @@
+// References
+// CSS Grid: https://css-tricks.com/snippets/css/complete-guide-grid/
+// Keyboard layout: https://codepen.io/vituja1/pen/mdEdXbV
+
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #232526;
-  background: linear-gradient(to right, #414345, #232526);
+  background: #b3beda;
+  // For Dark mode
+  // background: #232526;
+  // background: linear-gradient(to right, #414345, #232526);
 
   * {
     font-family: "Rajdhani", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
@@ -18,7 +25,6 @@ body {
     box-sizing: border-box;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    font-size: 0.875rem;
   }
 }
 
@@ -29,17 +35,97 @@ body {
   justify-items: center;
 }
 
+.main-heading {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 0;
+  padding: 25px;
+  font-size: 30px;
+  color: #5470b9;
+  font-weight: bolder;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-shadow: 2px 2px white;
+
+  &::before {
+    content: "";
+    width: 350px;
+    height: 5px;
+    background: #4c6ece;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 10px 0 0 #fff, 0 -10px 0 0 #fff;
+    z-index: -1;
+    border-radius: 5px;
+    opacity: 0.5;
+  }
+}
+
 .container {
   perspective: 1000px;
+}
+
+.userInputWrapper {
+  position: relative;
+  text-align: center;
+  margin-bottom: 15px;
+
+  #userInput {
+    width: 100%;
+    padding: 15px;
+    border: 0;
+    outline: 0;
+    box-shadow: 0 0 0 1px #5f7cc7;
+    background: #fff;
+    font-size: 20px;
+    border-radius: 4px;
+    letter-spacing: 2px;
+    resize: none;
+
+    &:focus {
+      box-shadow: 0 0 0 2px #b3beda, 0 0 0 5px #5f7cc7;
+    }
+  }
+
+  span#keyboardToggle {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    bottom: 10px;
+    right: 10px;
+    background: #fff;
+    cursor: pointer;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    svg {
+      fill: #b3beda;
+    }
+  }
 }
 
 #keyboard {
   position: relative;
   width: 900px;
   height: 280px;
-  transform: rotateX(30deg);
+  transform: scaleX(1) scaleY(0.03) rotateX(90deg);
+  opacity: 0;
 
   @include grid-utils;
+
+  &.open {
+    opacity: 1;
+    transform: scale(1.05) rotateX(30deg);
+    transform-origin: bottom;
+    transition: transform 1.5s ease-in-out, opacity 0.3s ease-in-out;
+  }
 
   .dock,
   .key-side {
@@ -99,6 +185,11 @@ body {
         width: 100%;
         height: 100%;
         grid-column: span 4;
+        cursor: pointer;
+
+        * {
+          user-select: none;
+        }
 
         @include grid-utils;
 
@@ -109,7 +200,7 @@ body {
         .front {
           width: 100%;
           height: 50%;
-          background: #aba9a9;
+          background: #cacaca;
         }
 
         .back {
@@ -133,7 +224,7 @@ body {
         .top {
           width: 100%;
           height: 100%;
-          background: gainsboro;
+          background: #fffefe;
 
           .charecters {
             position: absolute;
@@ -146,9 +237,63 @@ body {
             font-size: 12px;
             font-weight: bold;
           }
+
+          .capsLockIndicator {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            top: 50%;
+            left: calc(100% - 15px);
+            transform: translate(-50%, -50%);
+
+            &.off {
+              background: #a6a6a6;
+            }
+
+            &.on {
+              background: #48da48;
+              box-shadow: 0 0 5px 2px #4aea4a;
+            }
+          }
+
+          span.spaceIndicator {
+            position: absolute;
+            width: 20%;
+            height: 3px;
+            background: #aba9a9;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+          }
+
+          .contextMenuIcon {
+            position: absolute;
+            width: 15px;
+            height: 20px;
+            border-radius: 1px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 0 2px #848484;
+            opacity: 0.8;
+
+            > span {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 10px;
+              height: 2px;
+              border-radius: 2px;
+              background: #848484;
+              box-shadow: 0 5px 0 #848484, 0 -5px 0 #848484;
+            }
+          }
         }
 
-        &#backspace-key {
+        &#virtual-backspace-key {
           grid-column: span 8;
 
           .left {
@@ -156,34 +301,34 @@ body {
           }
         }
 
-        &#super-key,
-        &#control-key,
-        &#rightAlt-key,
-        &#contextMenu-key,
-        &#alt-key {
+        &#virtual-super-key,
+        &#virtual-control-key,
+        &#virtual-rightalt-key,
+        &#virtual-contextmenu-key,
+        &#virtual-alt-key {
           grid-column: span 5;
         }
 
-        &#tab-key,
-        &#rightControl-key,
-        &#back-slash-key {
+        &#virtual-tab-key,
+        &#virtual-rightcontrol-key,
+        &#virtual-back-slash-key {
           grid-column: span 6;
         }
 
-        &#capsLock-key {
+        &#virtual-capslock-key {
           grid-column: span 7;
         }
 
-        &#shift-key,
-        &#enter-key {
+        &#virtual-shift-key,
+        &#virtual-enter-key {
           grid-column: span 9;
         }
 
-        &#rightShift-key {
+        &#virtual-rightshift-key {
           grid-column: span 11;
         }
 
-        &#spaceBar-key {
+        &#virtual-spacebar-key {
           grid-column: span 25;
         }
       }
