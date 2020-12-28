@@ -1,3 +1,9 @@
+<p align="center">
+Virtual Keyboard <br/>
+<small>https://virtual-keyboard-himu.netlify.app/</small> <br/><br/>
+<img src="demo.gif" alt="Virtual Keyboard">
+</p>
+
 # The Virtual Keyboard
 > A virtual keyboard from scratch with Vanilla JS, HTML, and CSS that can be used in the browser and will be responsive.
 One to two paragraph statement about your product and what it does.
