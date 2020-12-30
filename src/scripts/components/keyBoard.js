@@ -156,7 +156,7 @@ export default class KeyBoard {
             break;
           default:
             if (this.shiftKey || window.shiftKey) {
-              actualValue = keyElement.dataset.shiftCharecter;
+              actualValue = keyElement.dataset.shiftCharecter || keyValue;
             } else {
               actualValue = keyValue;
             }
