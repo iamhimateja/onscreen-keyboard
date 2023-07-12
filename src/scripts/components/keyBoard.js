@@ -11,11 +11,11 @@ export default class KeyBoard {
     this.rowsContainer = $id("rows");
 
     // for traking capslock while using keys via mouse
-    this.capsLock = false; 
+    this.capsLock = false;
     this.shiftKey = false;
 
     this.modifiersOverridedByUser = false;
-  };
+  }
 
   init() {
     this.addKeyboardToUI();
@@ -75,7 +75,7 @@ export default class KeyBoard {
       }
       break;
     }
-    
+
     keyElements.forEach(element => {
       if (direction == "down") {
         element.style.transform = `translateZ(-${element.clientHeight / 2}px)`;
@@ -93,7 +93,7 @@ export default class KeyBoard {
       });
     });
 
-    $id("keyboardToggle").addEventListener('click', function(event) {
+    $id("keyboardToggle").addEventListener('click', function() {
       $id("keyboard").classList.toggle("open");
     });
 
@@ -106,7 +106,7 @@ export default class KeyBoard {
 
     ["mousedown", "mouseup", "mouseleave"].forEach(eventName => {
       $classes(".key", this.rowsContainer).forEach(keyElement => {
-        keyElement.addEventListener(eventName, event => {
+        keyElement.addEventListener(eventName, () => {
           let eventKey = keyElement.dataset.keyText;
           this.showKeyClickingTransition(eventKey, ((eventName == "mousedown") ? "down" : "up"));
         });
@@ -114,10 +114,10 @@ export default class KeyBoard {
     });
 
     $classes(".key", this.rowsContainer).forEach(keyElement => {
-      keyElement.addEventListener("click", event => {
+      keyElement.addEventListener("click", () => {
         let keyValue = keyElement.dataset.keyText,
-            actualValue = "", 
-            clearShiftKeyAfterAddingText = true, 
+            actualValue = "",
+            clearShiftKeyAfterAddingText = true,
             isBackspaceButton = false;
         const userInput = $id("userInput");
 
